@@ -23,7 +23,7 @@ function preperForMobile() {
     $("#waittips").css('display', 'none');
     
     $("#content").css('height', documentHeight - 130);        //设置中间部分高度自适应
-    $("#cityname").css('width', documentWidth - 100);         //设置头部城市名宽度自适应，设置居中
+    $("#cityname").css('width', documentWidth - 116);         //设置头部城市名宽度自适应，设置居中
     //设置底部横向tab栏宽度和城市下拉框的宽度及位置
     if (documentWidth > 700){
         $("#footer ul li").css('width', (documentWidth - 28)/7);
@@ -92,9 +92,9 @@ function init() {
         updateView($(this).index());
     });
     
-    //刷新天气
+    //弹出四格框，选择进入相应功能界面
     $("#refresh").click(function () {
-        queryWeather();
+        alertFDialog();
     });
     
     //点击右上角图标弹出下拉框跳转到其他界面

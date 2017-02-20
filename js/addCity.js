@@ -59,13 +59,6 @@ function init() {
                 return;
             }
             localStorage.setItem(arr[0], arr[0]);
-            /*for (var i = 0; i < localStorage.length; i++){
-                if (localStorage.getItem(localStorage.key(i)) == arr[0]){
-                    toast("该城市已在列表中", 3000);
-                    return;
-                }
-            }
-            localStorage.setItem(localStorage.length-1+'', arr[0]);*/
             toast("添加成功");
         })
     });
