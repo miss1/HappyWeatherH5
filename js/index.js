@@ -57,20 +57,6 @@ function getLocation() {
                             localStorage.setItem('0', result.city);
                         }
                     }
-                    /*if (localStorage.getItem(localStorage.key(0)) != result.city){
-                        var i = 1;
-                        for (i; i < localStorage.length; i++){
-                            if (localStorage.getItem(localStorage.key(i)) == result.city){
-                                localStorage.setItem(localStorage.key(i), localStorage.getItem(localStorage.key(0)));
-                                localStorage.setItem(localStorage.key(0), result.city);
-                                break;
-                            }
-                        }
-                        if (i == localStorage.length){
-                            localStorage.setItem(i-1+'', localStorage.getItem(localStorage.key(0)));
-                            localStorage.setItem(localStorage.key(0), result.city);
-                        }
-                    }*/
                 }else {
                     localStorage.setItem('0', result.city);
                 }
@@ -161,7 +147,7 @@ function queryWeather() {
         },
         success:function (data) {
             weatherInfo = data;
-            updateBg();
+            updateBg(weatherInfo.HeWeather5[0].daily_forecast[0], true);
             updateView(0);
             updateTab();
             updateCityNum();
@@ -181,9 +167,10 @@ function queryWeather() {
 }
 
 //更新背景图
-function updateBg() {
-    var forecastInfo = weatherInfo.HeWeather5[0].daily_forecast[0];
-    sessionStorage.setItem("bgcode", forecastInfo.cond.code_d);
+function updateBg(forecastInfo, issave) {
+    if (issave){
+        sessionStorage.setItem("bgcode", forecastInfo.cond.code_d);
+    }
     setBgPic(forecastInfo.cond.code_d);
 }
 
@@ -211,6 +198,7 @@ function updateView(x) {
     $("#update").text(weatherInfo.HeWeather5[0].basic.update.loc);
     $("#tmp").text(forecastInfo.tmp.min + "°" + " - " + forecastInfo.tmp.max + "°");
     $("#code_d").attr('src', imgPath(forecastInfo.cond.code_d));
+    updateBg(forecastInfo, false);
 }
 
 //更新下拉框城市个数
