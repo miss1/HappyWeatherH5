@@ -1,0 +1,76 @@
+/*头部*/
+header{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #fcfcfc;
+}
+
+#maback{
+    float: left;
+}
+
+header h2{
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    font-size: 26px;
+    text-align: center;
+}
+
+#add{
+    display: block;
+    float: right;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+/*头部结束*/
+/*左滑列表*/
+ .list-ul{
+     overflow: hidden
+ }
+
+ .list-li{
+     line-height: 70px;
+     border-bottom: 1px solid #fcfcfc;
+     position:relative;
+     -webkit-transform: translateX(0px);
+ }
+
+ .btn{
+     position: absolute;
+     top: 0;
+     right: -80px;
+     text-align: center;
+     background: #669CEE;
+     color: #fff;
+     width: 80px;
+ }
+/*左滑列表结束*/
+/*左滑列表里的内容*/
+.con{
+    text-align: center;
+}
+.cityname{
+    width: 100px;
+    float: left;
+    font-size: 20px;
+}
+
+.citylocation{
+    background: url("../img/location.png") no-repeat center right;
+}
+
+.citytmp{
+    float: right;
+    font-size: 20px;
+    margin-right: 12px;
+}
+
+.con img{
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+}
+/*左滑列表里的内容结束*/
+

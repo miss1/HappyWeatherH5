@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>HappyWeather</title>
+
+    <link type="text/css" rel="stylesheet" href="../css/demo.css"/>
+    <link type="text/css" rel="stylesheet" href="../css/addCity.css">
+
+    <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../js/support.js"></script>
+    <script type="text/javascript" src="../js/addCity.js"></script>
+    <script type="text/javascript" src="../js/customdialog.js"></script>
+    <script type="text/javascript" src="../js/customtoast.js"></script>
+</head>
+<body>
+    <!--头部-->
+    <div id="header">
+        <img src="../img/back.png" id="add_back">
+        <span id="add_title" class="add_center">添加城市</span>
+        <input type="text" placeholder="请输入城市名" oninput="onInput(event)" id="add_input" class="add_center">
+        <label id="add_search">搜索</label>
+    </div>
+    <!--头部结束-->
+    <!--搜索结果-->
+    <div id="content">
+        <ul id="searchlist"></ul>
+    </div>
+</body>
+</html>

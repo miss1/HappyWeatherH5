@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>HappyWeather</title>
+
+    <link type="text/css" rel="stylesheet" href="../css/demo.css"/>
+    <link type="text/css" rel="stylesheet" href="../css/weatherDetail.css"/>
+
+    <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../js/support.js"></script>
+    <script type="text/javascript" src="../js/weatherDetail.js"></script>
+</head>
+<body>
+    <!--头部-->
+    <div id="header"><img src="../img/back.png"/><span id="time">today: 02-14</span><span id="cityname">海口</span></div>
+    <!--头部结束-->
+    <!--内容部分-->
+    <div id="content">
+        <!--上半部分天气详情-->
+        <div id="detail_weather">
+            <div id="weather_word">
+                <span>温度：18°</span>
+                <span>体感温度：21°</span>
+                <span>相对湿度：85%</span>
+                <span>风力风向：东风5-6级</span>
+                <span>降水量：0mm</span>
+                <span>能见度：10km</span>
+            </div>
+            <div id="weather_icon">
+                <img src="../img/aoa.png"/>
+            </div>
+        </div>
+        <!--下半部分生活建议-->
+        <div id="detail_suggesstion">
+            <div id="suggesstion_title">
+                <ul>
+                    <li class="suggesstion_selector">舒适度</li>
+                    <li>穿衣指数</li>
+                    <li>洗车指数</li>
+                    <li>感冒指数</li>
+                    <li>运动指数</li>
+                    <li>旅游指数</li>
+                    <li>紫外线指数</li>
+                </ul>
+            </div>
+            <div id="suggesstion_detail">
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!--内容部分结束-->
+    <!--等待动画-->
+    <img src="../img/arror.png" id="waittips">
+    <!--等待动画-->
+</body>
+</html>
