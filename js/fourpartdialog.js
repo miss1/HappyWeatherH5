@@ -12,21 +12,22 @@ function alertFDialog() {
 function fdialogHtml() {
     var _fhtml = '';
     _fhtml += '<div id="fb_box"></div><div id="fb_con"><img src="../img/close.png" id="close"><table>';
-    _fhtml += '<tr id="line1"><td class="line"><a href="#"><img src="../img/minionl.png"></a></td>';
+    _fhtml += '<tr id="line1"><td class="line"><a href="../html/weatherPK.html"><img src="../img/minionl.png"></a></td>';
     _fhtml += '<td><a href="#"><img src="../img/minion.png"></a></td></tr>';
     _fhtml += '<tr><td class="line"><a href="#"><img src="../img/minionl.png"></a></td>';
     _fhtml += '<td><a href="#"><img src="../img/minion.png"></a></td></tr>';
     _fhtml += '</table></div>';
     $("body").append(_fhtml);
     fdialogCss();
+    $("#fb_box,#fb_con").fadeIn();
 }
 
 //四格弹出框样式
 function fdialogCss() {
     $("#fb_box").css({ width: '100%', height: '100%', zIndex: '99999', position: 'fixed',
-        filter: 'Alpha(opacity=60)', backgroundColor: 'black', top: '0', left: '0', opacity: '0.6'
+        filter: 'Alpha(opacity=60)', backgroundColor: 'black', top: '0', left: '0', opacity: '0.6', display: 'none'
     });
-    $("#fb_con").css({ zIndex: '999999', position: 'fixed',
+    $("#fb_con").css({ zIndex: '999999', position: 'fixed', display: 'none',
         backgroundColor: 'White', borderRadius: '15px'
     });
     $("#close").css({zIndex: '99999', position: 'fixed'});
@@ -55,6 +56,8 @@ function fdialogCss() {
 //点击事件
 function btnClose() {
     $("#close").click(function () {
-        $("#fb_box,#fb_con").remove();
+        $("#fb_box,#fb_con").fadeTo("slow", 0.01, function () {
+            $("#fb_box,#fb_con").remove();
+        });
     });
 }

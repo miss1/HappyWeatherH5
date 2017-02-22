@@ -19,14 +19,15 @@ function GenerateHtml(title, content) {
     //必须先将_html添加到body，再设置Css样式
     $("body").append(_html);
     GenerateCss();
+    $("#mb_box,#mb_con").fadeIn();
 }
 
 //弹出框样式
 function GenerateCss() {
     $("#mb_box").css({ width: '100%', height: '100%', zIndex: '99999', position: 'fixed',
-        filter: 'Alpha(opacity=60)', backgroundColor: 'black', top: '0', left: '0', opacity: '0.6'
+        filter: 'Alpha(opacity=60)', backgroundColor: 'black', top: '0', left: '0', opacity: '0.6', display: 'none'
     });
-    $("#mb_con").css({ zIndex: '999999', position: 'fixed',
+    $("#mb_con").css({ zIndex: '999999', position: 'fixed', display: 'none',
         backgroundColor: 'White', borderRadius: '15px'
     });
     $("#mb_tit").css({ display: 'block', fontSize: '16px', color: '#444', padding: '10px 15px',
@@ -56,7 +57,9 @@ function GenerateCss() {
 //点击确定
 function btnOk(callback) {
     $("#mb_btn_ok").click(function () {
-        $("#mb_box,#mb_con").remove();
+        $("#mb_box,#mb_con").fadeTo("slow", 0.01, function () {
+            $("#mb_box,#mb_con").remove();
+        });
         if (typeof (callback) == 'function') {
             callback();
         }
@@ -66,6 +69,9 @@ function btnOk(callback) {
 //点击取消
 function btnNo() {
     $("#mb_btn_no").click(function () {
-        $("#mb_box,#mb_con").remove();
+        $("#mb_box,#mb_con").fadeTo("slow", 0.01, function () {
+            $("#mb_box,#mb_con").remove();
+        });
+       // $("#mb_box,#mb_con").remove();
     });
 }
