@@ -41,7 +41,7 @@ function init() {
             $("#add_title").css('display', 'inline-block');
             $("#add_input").css('display', 'none');
             $("#add_search").css('display', 'inline-block');
-            $("#searchlist").html('');
+            $("#searchlist").html(''); 
         }else {
             history.go(-1);        //返回上一页（表单数据还在）;history.back(-1)，返回上一页，新页面
         }

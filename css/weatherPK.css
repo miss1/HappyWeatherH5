@@ -1,5 +1,80 @@
+/*page1*/
+/*标题*/
+#pk_title{
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    top: 20px;
+}
 
-/*弹出框*/
+#pk_title img{
+    width: 300px;
+    height: 80px;
+}
+/*标题结束*/
+/*pk中间部分，选择城市*/
+#pk_begin{
+    display: table;
+    width: 100%;
+}
+
+#pk_begin_c{
+    margin: 0 auto;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#pkcity_title{
+    display: block;
+    font-size: 26px;
+    text-align: center;
+}
+
+#pk_begin_c div{
+    width: 300px;
+    margin: 16px auto;
+}
+
+#pk_begin_c div span,#page2_title div span{
+    display: inline-block;
+    width: 100px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 26px;
+    text-align: center;
+}
+
+#pk_begin_c div span:hover,#pkcity_ok:hover{
+    color: #89D9ED;
+}
+
+#pkcity_ok{
+    display: block;
+    font-size: 26px;
+    text-align: center;
+}
+/*pk中间部分，选择城市结束*/
+/*底部，关闭按钮*/
+#pk_close{
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    bottom: 60px;
+}
+
+#pk_close div{
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    background: url("../img/pkclose.png") no-repeat center;
+}
+
+#pk_close div:hover{
+    background: url("../img/close.png") no-repeat center;
+}
+/*底部，关闭按钮结束*/
+/*选择城市弹出框*/
 #c_cityl li{
     color: #888888;
     width: 100%;
@@ -11,4 +86,24 @@
 
 #c_cityl li:hover{
     background: #09F7F7;
+}
+/*page1结束*/
+
+/*page2*/
+#page1{
+    display: none;
+}
+
+#page2{
+    /*display: none;*/
+}
+
+#page2_title{
+    width: 100%;
+    height: 70px;
+    text-align: center;
+}
+
+#page2_title div{
+    margin-top: 10px;
 }

@@ -13,9 +13,35 @@
     <script type="text/javascript" src="../js/support.js"></script>
     <script type="text/javascript" src="../js/customtoast.js"></script>
     <script type="text/javascript" src="../js/choosecitydialog.js"></script>
+    <script type="text/javascript" src="../js/myprogressbar.js"></script>
     <script type="text/javascript" src="../js/weatherPK.js"></script>
 </head>
 <body>
-    <button onclick="oncl()">choose</button>
+    <!--page1-->
+    <div id="page1">
+        <div id="pk_title"><img src="../img/pktitle.png"/></div>
+        <div id="pk_begin">
+            <div id="pk_begin_c">
+                <span id="pkcity_title">选择PK城市</span>
+                <div><span id="pkcity_left">？</span><img src="../img/pk3.png"/><span id="pkcity_right">？</span></div>
+                <span id="pkcity_ok">开始PK</span>
+            </div>
+        </div>
+        <div id="pk_close"><div></div></div>
+    </div>
+    <!--page1结束-->
+    <!--page2-->
+    <div id="page2">
+        <div id="page2_title">
+            <div><span id="page2_cityl">？</span><img src="../img/pk3.png"/><span id="page2_cityr">？</span></div>
+            <div>
+                <canvas id="myCanvas" width="350" height="150">Your browser does not have support for canvas.</canvas>
+            </div>
+            <div>
+                <canvas id="myCanvas1" width="350" height="150">Your browser does not have support for canvas.</canvas>
+            </div>
+        </div>
+    </div>
+    <!--page2结束-->
 </body>
 </html>
