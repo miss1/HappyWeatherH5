@@ -42,6 +42,19 @@ function getUrlParam(name) {
     return null;
 }
 
+//天气pk页面展示pk结果
+function showPkResult(weatherinfoL, weatherinfoR, idnameL, idnameR, isleft) {
+    $("#"+idnameL).text(weatherinfoL);
+    $("#"+idnameR).text(weatherinfoR);
+    if (isleft){
+        $("#"+idnameL).addClass("pkleftv");
+    }else {
+        $("#"+idnameR).addClass("pkrightv");
+    }
+    $("#"+idnameL).fadeIn();
+    $("#"+idnameR).fadeIn();
+}
+
 //将时间去掉年份之后显示出来
 function splitDate(data) {
     return data.split("-")[1] + "-" + data.split("-")[2];

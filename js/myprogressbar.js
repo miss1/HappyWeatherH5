@@ -20,6 +20,9 @@ var progress_lingradr;  //右边进度条颜色
 var fireHeight;
 var fireWidth;
 
+var weather_l;
+var weather_r;
+
 /**
  * 画一个两边往中间走的进度条
  * @param idname 画笔的id
@@ -31,8 +34,10 @@ var fireWidth;
  * @param y 进度条纵向的位置
  * @param fw 烟花的x轴位置
  * @param fh 烟花的y轴位置
+ * @param weatherl 左边天气信息
+ * @param weatherr 右边天气信息
  */
-function loadprogressbar(idname, left_width, right_width, height, startX, endX, y, fw, fh) {
+function loadprogressbar(idname, left_width, right_width, height, startX, endX, y, fw, fh, weatherl, weatherr) {
 
     l_width = left_width;
     r_width = right_width;
@@ -45,6 +50,9 @@ function loadprogressbar(idname, left_width, right_width, height, startX, endX, 
     
     fireHeight = fh;
     fireWidth = fw;
+
+    weather_l = weatherl;
+    weather_r = weatherr;
 
     var elem = document.getElementById(idname);
     if (!elem || !elem.getContext) {
@@ -178,6 +186,7 @@ function progressTextLeft(ctx, x, y, width, radius) {
     if (width >= l_width){
         if (l_width >= r_width){
             startFirework(fireWidth, fireHeight, 5, 30);
+            showpkResult();
         }
     }
 }
@@ -197,6 +206,31 @@ function progressTextRight(ctx, x, y, width, radius) {
     if (width >= r_width){
         if (l_width < r_width){
             startFirework(fireWidth, fireHeight, 5, 30);
+            showpkResult();
         }
+    }
+}
+
+//天气pk页面展示pk结果
+function showpkResult() {
+    var isleft;
+    if (parseInt(weather_l) < parseInt(weather_r)){
+        isleft = false;
+    }else {
+        isleft = true;
+    }
+    switch (fireHeight){
+        case 130:
+            showPkResult(weather_l+"°", weather_r+"°", "tmpvaluel", "tmpvaluer", isleft);
+            break;
+        case 230:
+            showPkResult(weather_l+"km", weather_r+"km", "visvaluel", "visvaluer", isleft);
+            break;
+        case 330:
+            showPkResult(weather_l+"%", weather_r+"%", "hunvaluel", "hunvaluer", isleft);
+            break;
+        case 430:
+            showPkResult(weather_l+"kmph", weather_r+"kmph", "pmvaluel", "pmvaluer", isleft);
+            break;
     }
 }

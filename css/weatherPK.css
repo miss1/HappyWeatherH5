@@ -124,13 +124,13 @@
     height: 100px;
 }
 
-.pkitem div{
+.tmpl,.tmpr{
     width: 60px;
     height: 100px;
     text-align: center;
 }
 
-.pkitem span{
+.tmpl span,.tmpr span{
     display: block;
     margin-top: 5px;
     color: #5E5E5E;
@@ -152,15 +152,60 @@
 }
 
 .pkcanvas{
-    display: inline-block;
     height: 100px;
     text-align: center;
+}
+
+.pkiitemcenter{
+    display: inline-block;
+    height: 100px;
+    position: relative;
 }
 
 .canv{
     height: 100px;
 }
+
+.pkvalue{
+    position: absolute;
+    top: 10px;
+}
+
+.pkvalue_left{
+    float: left;
+    width: 70px;
+    color: white;
+    display: none;
+}
+
+.pkvalue_right{
+    float: right;
+    width: 70px;
+    padding-left: 35px;
+    color: white;
+    display: none;
+}
+
+.pkleftv{
+    background: url("../img/victory1.png") no-repeat right;
+}
+
+.pkrightv{
+    background: url("../img/victory1.png") no-repeat left;
+}
 /*pkItem结束*/
+
+/*总结*/
+#pkconcluding{
+    width: 230px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#pkconcluding span{
+    color: #FFFFCC;
+    font-size: 18px;
+}
 
 /*烟花*/
 #fire{

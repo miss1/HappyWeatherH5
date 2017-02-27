@@ -24,10 +24,12 @@ function preperforMobile() {
     $(".pkcanvas").css('width', documentWidth - 120);
     if (documentWidth > 700){
         $(".pkitem canvas").css('width', 300);
+        $(".pkvalue").css({width: 300,left: (documentWidth - 420)/2});
         endX = 280;
         fireworkX = (documentWidth - 300)/2 + 80;
     }else {
         $(".pkitem canvas").css('width', documentWidth - 120);
+        $(".pkvalue").css('width', documentWidth - 120);
         endX = documentWidth - 90;
         fireworkX = 100;
     }
@@ -45,6 +47,10 @@ function init() {
             document.getElementById("hunCanvas").getContext('2d').clearRect(0, 0, endX+20, 100);
             document.getElementById("pmCanvas").getContext('2d').clearRect(0, 0, endX+20, 100);
 
+            $(".pkvalue_right").removeClass("pkrightv");
+            $(".pkvalue_left").removeClass("pkleftv");
+            $(".pkvalue_left").fadeOut();
+            $(".pkvalue_right").fadeOut();
             $("#progresscanvas").fadeOut();
             $("#prepertips").fadeIn();
             $("#page2").fadeOut();
@@ -118,20 +124,20 @@ function startprogress() {
     $("#progresscanvas").fadeIn();
     console.log(endX - startX);
     setTimeout(function () {
-        loadprogressbar("tmpCanvas", calculateLeft(2, 5)["left"],
-            calculateLeft(2, 5)["right"], pheight, startX, endX, y, fireworkX, 130);
+        loadprogressbar("tmpCanvas", caculatetmp(leftdata.tmp, rightdata.tmp)["left"],
+            caculatetmp(leftdata.tmp, rightdata.tmp)["right"], pheight, startX, endX, y, fireworkX, 130, leftdata.tmp, rightdata.tmp);
     },1000);
     setTimeout(function () {
         loadprogressbar("visCanvas", calculateLeft(leftdata.vis, rightdata.vis)["left"],
-            calculateLeft(leftdata.vis, rightdata.vis)["right"], pheight, startX, endX, y, fireworkX, 230);
+            calculateLeft(leftdata.vis, rightdata.vis)["right"], pheight, startX, endX, y, fireworkX, 230, leftdata.vis, rightdata.vis);
     },7000);
     setTimeout(function () {
         loadprogressbar("hunCanvas", calculateLeft(leftdata.hum, rightdata.hum)["left"],
-            calculateLeft(leftdata.hum, rightdata.hum)["right"], pheight, startX, endX, y, fireworkX, 330);
+            calculateLeft(leftdata.hum, rightdata.hum)["right"], pheight, startX, endX, y, fireworkX, 330, leftdata.hum, rightdata.hum);
     },13000);
     setTimeout(function () {
         loadprogressbar("pmCanvas", calculateLeft(leftdata.wind.spd, rightdata.wind.spd)["left"],
-            calculateLeft(leftdata.wind.spd, rightdata.wind.spd)["right"], pheight, startX, endX, y, fireworkX, 430);
+            calculateLeft(leftdata.wind.spd, rightdata.wind.spd)["right"], pheight, startX, endX, y, fireworkX, 430, leftdata.wind.spd, rightdata.wind.spd);
     },19000);
 }
 
@@ -142,6 +148,34 @@ function calculateLeft(leftdata, rightdata) {
     var multiply = digit(canvalenth / datalenth, 2);
     var calculateresult = {"left":multiply*parseInt(leftdata),"right":multiply*parseInt(rightdata)};
     return calculateresult;
+}
+
+//计算温度的进度条长度(此算法待之后重写)
+function caculatetmp(leftdata, rightdata) {
+    var ltmp = parseInt(leftdata);
+    var rtmp = parseInt(rightdata);
+    console.log(ltmp+","+rtmp);
+    if (ltmp == 0){
+        ltmp = 1;
+    }
+    if (rtmp == 0){
+        rtmp =1;
+    }
+    if (ltmp > 0 && rtmp >0){
+        return calculateLeft(ltmp, rtmp);
+    }else if (ltmp < 0 && rtmp < 0){
+        return calculateLeft(Math.abs(ltmp), Math.abs(rtmp));
+    }else {
+        if (ltmp < 0){
+            ltmp = Math.abs(ltmp);
+            rtmp = rtmp + ltmp * 2;
+        }else {
+            rtmp = Math.abs(rtmp);
+            ltmp = ltmp + rtmp * 2;
+        }
+        console.log(ltmp+","+rtmp);
+        return calculateLeft(ltmp, rtmp);
+    }
 }
 
 //保留两位小数
