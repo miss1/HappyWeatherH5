@@ -37,7 +37,7 @@ function init() {
     
     //返回按钮点击事件
     $("#add_back").click(function () {
-        if ($("#add_search").css('display') == 'none'){
+        if ($("#page1").css('display') == 'none'){
             $("#add_title").css('display', 'inline-block');
             $("#add_input").css('display', 'none');
             $("#add_search").css('display', 'inline-block');

@@ -8,6 +8,7 @@ var SERVER_URL = "https://free-api.heweather.com/v5";
 var PATH_FORECAST = "/forecast";
 var PATH_NOW = "/now";
 var PATH_SUGGESTION = "/suggestion";
+var PATH_WEATHER = "/weather";
 var PATH_SEARCH = "../json/city.json";
 var KEY = "46ffe7931e3f4da38a47fa1554abcd59";
 

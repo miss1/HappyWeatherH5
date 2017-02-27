@@ -17,6 +17,9 @@ var end_x;     //结束位置
 var progress_lingrad;   //左边进度条颜色
 var progress_lingradr;  //右边进度条颜色
 
+var fireHeight;
+var fireWidth;
+
 /**
  * 画一个两边往中间走的进度条
  * @param idname 画笔的id
@@ -26,8 +29,10 @@ var progress_lingradr;  //右边进度条颜色
  * @param startX 进度条起始位置
  * @param endX 进度条结束位置（右边起始位置）
  * @param y 进度条纵向的位置
+ * @param fw 烟花的x轴位置
+ * @param fh 烟花的y轴位置
  */
-function loadprogressbar(idname, left_width, right_width, height, startX, endX, y) {
+function loadprogressbar(idname, left_width, right_width, height, startX, endX, y, fw, fh) {
 
     l_width = left_width;
     r_width = right_width;
@@ -35,6 +40,11 @@ function loadprogressbar(idname, left_width, right_width, height, startX, endX, 
     start_x = startX;
     end_x = endX;
     p_y = y;
+    i = 0;
+    j = 0;
+    
+    fireHeight = fh;
+    fireWidth = fw;
 
     var elem = document.getElementById(idname);
     if (!elem || !elem.getContext) {
@@ -44,6 +54,9 @@ function loadprogressbar(idname, left_width, right_width, height, startX, endX, 
     if (!context) {
         return;
     }
+
+    //context.clearRect(start_x, p_y, l_width+right_width, total_height);
+
     // set font
     context.font = "16px Verdana";
 
@@ -161,6 +174,12 @@ function progressTextLeft(ctx, x, y, width, radius) {
     }
     ctx.fillText(width, text_x, y+22);
     ctx.restore();
+    //放烟花
+    if (width >= l_width){
+        if (l_width >= r_width){
+            startFirework(fireWidth, fireHeight, 5, 30);
+        }
+    }
 }
 
 //从右往左
@@ -174,4 +193,10 @@ function progressTextRight(ctx, x, y, width, radius) {
     }
     ctx.fillText(width, text_x, y+22);
     ctx.restore();
+    //放烟花
+    if (width >= r_width){
+        if (l_width < r_width){
+            startFirework(fireWidth, fireHeight, 5, 30);
+        }
+    }
 }
