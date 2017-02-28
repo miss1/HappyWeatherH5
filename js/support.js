@@ -4,6 +4,7 @@
 documentWidth = window.innerWidth;
 documentHeight = window.innerHeight;
 
+/*获取天气信息相关*/
 var SERVER_URL = "https://free-api.heweather.com/v5";
 var PATH_FORECAST = "/forecast";
 var PATH_NOW = "/now";
@@ -11,6 +12,13 @@ var PATH_SUGGESTION = "/suggestion";
 var PATH_WEATHER = "/weather";
 var PATH_SEARCH = "../json/city.json";
 var KEY = "46ffe7931e3f4da38a47fa1554abcd59";
+
+/*bmob后端云相关*/
+var APPLICATIONID = "cc41b6fbd69c6e48da4b16d9e197337a";
+var RESTAPIKEY = "d6a24c39ec32e986376dbd7f96460fb7";
+
+//一天的毫秒数
+var ONEDAY = 86400000;
 
 $(document).ready(function () {
     if (sessionStorage.getItem("bgcode") != undefined){
@@ -40,6 +48,20 @@ function getUrlParam(name) {
         return decodeURI(r[2]);
     }
     return null;
+}
+
+//获取时间(年月日 2017-02-28)
+function getDate(querytimes) {
+    var curDate = new Date();
+    var myDate = new Date(curDate.getTime() - ONEDAY*querytimes);
+    var year = myDate.getFullYear();
+    var month = myDate.getMonth() + 1;
+    var date = myDate.getDate();
+    return year + '-' + dealDate(month) + '-' + dealDate(date);
+}
+
+function dealDate(s) {
+    return s < 10 ? '0' + s: s;
 }
 
 //天气pk页面展示pk结果

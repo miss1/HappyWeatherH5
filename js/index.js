@@ -23,7 +23,6 @@ function preperForMobile() {
     $("#waittips").css('display', 'none');
     
     $("#content").css('height', documentHeight - 130);        //设置中间部分高度自适应
-    $("#cityname").css('width', documentWidth - 116);         //设置头部城市名宽度自适应，设置居中
     //设置底部横向tab栏宽度和城市下拉框的宽度及位置
     if (documentWidth > 700){
         $("#footer ul li").css('width', (documentWidth - 28)/7);
@@ -205,8 +204,8 @@ function updateView(x) {
 function updateCityNum() {
     var cityHtml = '';
     for (var i = 0; i < localStorage.length; i++){
-        console.log(localStorage.key(i));
-        if (localStorage.key(i) != '_AMap_maintcvdircgCitySearch'){
+        console.log("size:"+localStorage.key(i).length);
+        if (localStorage.key(i).length < 5){     //过滤掉地图以及bmob的信息
             cityHtml += "<span>" + localStorage.getItem(localStorage.key(i)) + "</span>"
         }
     }
