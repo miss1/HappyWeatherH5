@@ -15,6 +15,7 @@ var KEY = "46ffe7931e3f4da38a47fa1554abcd59";
 
 /*历史上的今天接口*/
 var H_SERVER_URL = "http://v.juhe.cn/todayOnhistory/queryEvent.php";
+var H_DETAIL_SERVER_URL = "http://v.juhe.cn/todayOnhistory/queryDetail.php";
 var H_KEY = "b293da1aec89ab609f0615c00106065c";
 
 /*bmob后端云相关*/

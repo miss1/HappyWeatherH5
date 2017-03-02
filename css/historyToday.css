@@ -67,3 +67,23 @@
 /*内容部分，瀑布流*/
 
 /*第二部分，详细内容*/
+#h_page2{
+    width: 100%;
+    overflow-y: auto;
+    display: none;
+}
+
+#h_detail{
+    margin: 0 auto;
+}
+
+#hd_time,#hd_title{
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+}
+
+#hd_content{
+    font-size: 16px;
+    line-height: 24px;
+}
