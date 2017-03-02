@@ -14,8 +14,8 @@ function fdialogHtml() {
     _fhtml += '<div id="fb_box"></div><div id="fb_con"><img src="../img/close.png" id="close"><table>';
     _fhtml += '<tr id="line1"><td class="line"><a href="../html/weatherPK.html"><img src="../img/minionl.png"></a></td>';
     _fhtml += '<td><a href="../html/weatherComic.html"><img src="../img/minion.png"></a></td></tr>';
-    _fhtml += '<tr><td class="line"><a href="#"><img src="../img/minionl.png"></a></td>';
-    _fhtml += '<td><a href="#"><img src="../img/minion.png"></a></td></tr>';
+    _fhtml += '<tr><td class="line"><a href="../html/weatherGame.html"><img src="../img/minionl.png"></a></td>';
+    _fhtml += '<td><a href="../html/historyTody.html"><img src="../img/minion.png"></a></td></tr>';
     _fhtml += '</table></div>';
     $("body").append(_fhtml);
     fdialogCss();

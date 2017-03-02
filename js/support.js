@@ -13,6 +13,10 @@ var PATH_WEATHER = "/weather";
 var PATH_SEARCH = "../json/city.json";
 var KEY = "46ffe7931e3f4da38a47fa1554abcd59";
 
+/*历史上的今天接口*/
+var H_SERVER_URL = "http://v.juhe.cn/todayOnhistory/queryEvent.php";
+var H_KEY = "b293da1aec89ab609f0615c00106065c";
+
 /*bmob后端云相关*/
 var APPLICATIONID = "cc41b6fbd69c6e48da4b16d9e197337a";
 var RESTAPIKEY = "d6a24c39ec32e986376dbd7f96460fb7";

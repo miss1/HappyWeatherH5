@@ -28,7 +28,7 @@ function init() {
 
     //滚动事件
     $("#content").scroll(function () {
-        if ($(this).scrollTop() > $("#content_img").height() - documentHeight + 74 && $(this).scrollTop() < $("#content_img").height() - documentHeight + 80){
+        if ($(this).scrollTop() > $("#content_img").height() - documentHeight + 70 && $(this).scrollTop() < $("#content_img").height() - documentHeight + 80){
             console.log("滚动条已经到达底部："+$(this).scrollTop());
             if (getDate(querytimes + 1) == "2017-02-25"){
                 $("#loading_tips").css('display', 'block');
@@ -61,7 +61,7 @@ function querycomic() {
                 querycomic();
             }else {
                 $("#loading_tips").css('display', 'none');
-                var _html = "<span>"+ getDate(querytimes) +"</span>";
+                var _html = "<span>"+ getDate(querytimes) +"</span><span>"+ object[0].get("name") +"</span>";
                 //var _html = "";
                 if (documentWidth > 700){
                     for (var i = 0; i < object.length; i++){
@@ -69,7 +69,7 @@ function querycomic() {
                     }
                 }else {
                     for (var i = 0; i < object.length; i++){
-                        _html += "<img src='"+ object[i].get("picurl")._url +"' style='width: 300px'>";
+                        _html += "<img src='"+ object[i].get("picurl")._url +"' style='width: "+ (documentWidth - 20) +"px'>";
                     }
                 }
                 $("#content_img").append(_html);
