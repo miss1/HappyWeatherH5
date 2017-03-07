@@ -22,8 +22,10 @@ function preperforM() {
     $("#h_page2").css('height', documentHeight - 50);
     if (documentWidth > 700){
         $("#h_detail").css('width', 500);
+        $("#hd_img img").css('max-width', 500);
     }else {
         $("#h_detail").css('width', documentWidth - 10);
+        $("#hd_img img").css('max-width', documentWidth - 10);
     }
 }
 
@@ -170,4 +172,5 @@ function initViewpage2(targetinfo, data) {
     }else {
         $("#hd_img img").attr('src', '../img/ZWCPTP.gif');
     }
+
 }
