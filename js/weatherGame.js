@@ -8,28 +8,110 @@ var moveTime = 400;  //记录animate动画的运动时间，默认400毫秒
 
 var imgCells = '';    //记录碎片节点
 
-var lever = 3;      //难度 2x2
+var lever = 3;      //难度 3x3
 
-$(document).ready(function () {
-    imgSplit("../img/man.jpg");
-    initClick();
-});
+var isInGame = false;       //标记是否在游戏中
+var scroe = 0;        //游戏步数
 
-function initClick() {
-    //开始/重置游戏
-    $("#game_begin span").click(function () {
-        imgSplit("../img/man.jpg");
-        randomArr();
-        cellOrder(imgRandArr);
+var presentImg;          //当前图片
+var passImg = [];        //已经通关的图片
 
-        imgCells.unbind("mouseover");
-        imgCells.unbind("mouseout");
-        imgCells.unbind("mousedown");
-        imgCells.off("touchstart");
+function initGame(img, clicktarger) {
+    presentImg = img;
+    $("#btn").unbind();    //移除所有的事件绑定
+    $("#level").unbind();
+    $("#game_result span").unbind();
+    lever = 3;
+    $("#level").text("level: " + lever + "x" + lever);
 
-        beginGamePc();
-        beginGamePhone();
+    $("#imgArea").fadeIn();
+    $("#game_reward").fadeOut();
+
+    if ($.inArray(img, passImg) != -1){
+        $("#game_result span").css('background', '#62baa0');
+        $("#game_result span").click(function () {
+            showReward();
+        });
+    }else {
+        $("#game_result span").css('background', '#5E5E5E');
+    }
+
+    if (isInGame){
+        alertBox("切换图片", "游戏正在进行，确定要切换图片重新开始吗？", function () {
+            removeSclection();
+            changeState(clicktarger);
+
+            imgSplit(img);
+            $("#btn").text("开始");
+            isInGame = false;
+            scroe = 0;
+            $("#scroe").text("步数：0");
+        })
+    }else {
+        if (clicktarger != undefined){
+            removeSclection();
+            changeState(clicktarger);
+        }
+        imgSplit(img);
+    }
+
+    //开始/复原游戏
+    $("#btn").click(function () {
+        $("#imgArea").fadeIn();
+        $("#game_reward").fadeOut();
+        if (isInGame){
+            alertBox("复原游戏", "游戏正在进行，确定要复原吗？", function () {
+                imgSplit(img);
+                rebackGame();
+            })
+        }else {
+            imgSplit(img);
+            randomArr();
+            cellOrder(imgRandArr);
+            beginGamePc();
+            beginGamePhone();
+            $("#btn").text("复原");
+            isInGame = true;
+            scroe = 0;
+            $("#scroe").text("步数：0");
+        }
     });
+
+    //切换难度
+    $("#level").click(function () {
+        if (isInGame){
+            alertBox("重新开始", "游戏尚未结束，确定要切换难度重新开始吗？", function () {
+                if (lever < 6){
+                    lever += 1;
+                }else {
+                    lever = 3;
+                }
+                imgSplit(img);
+                rebackGame();
+                $("#level").text("level: " + lever + "x" + lever);
+            })
+        }else {
+            if (lever < 6){
+                lever += 1;
+            }else {
+                lever = 3;
+            }
+            imgSplit(img);
+            $("#level").text("level: " + lever + "x" + lever);
+        }
+    });
+}
+
+//复原游戏
+function rebackGame() {
+    imgCells.unbind("mouseover");
+    imgCells.unbind("mouseout");
+    imgCells.unbind("mousedown");
+    imgCells.off("touchstart");
+    $("#btn").text("开始");
+    isInGame = false;
+    scroe = 0;
+    $("#scroe").text("步数：0");
 }
 
 //切割图片
@@ -87,7 +169,7 @@ function beginGamePc() {
 
         $(document).bind("mouseup", function (e3) {
             var cellIndex_2 = cellChangeIndex(e3.pageX - $("#imgArea").offset().left, e3.pageY - $("#imgArea").offset().top, cellIndex_1);
-            console.log(cellIndex_2);
+            //console.log(cellIndex_2);
             if (cellIndex_1 == cellIndex_2){
                 cellReturn(cellIndex_1);
             }else {
@@ -120,7 +202,7 @@ function beginGamePhone() {
 
         $(document).on('touchend', function (e3) {
             var cellIndex_2 = cellChangeIndex(e3.changedTouches[0].pageX - $("#imgArea").offset().left, e3.changedTouches[0].pageY - $("#imgArea").offset().top, cellIndex_1);
-            console.log(cellIndex_2);
+            //console.log(cellIndex_2);
             if (cellIndex_1 == cellIndex_2){
                 cellReturn(cellIndex_1);
             }else {
@@ -135,11 +217,13 @@ function beginGamePhone() {
 //打乱数组顺序
 function randomArr() {
     imgRandArr = [].concat(imgOrigArr);   //将顺序的数组值赋给新数组之后打乱顺序
-    imgRandArr.sort(function () {
-       return 0.5 - Math.random();
-    });
-    console.log("before:"+imgOrigArr);
-    console.log("after:"+imgRandArr);
+    for (var i = 0; i < imgOrigArr.length; i++){
+        imgRandArr.sort(function () {
+            return 0.5 - Math.random();
+        });
+    }
+    /*console.log("before:"+imgOrigArr);
+    console.log("after:"+imgRandArr);*/
 }
 
 //根据打乱的数组给图片排序
@@ -209,6 +293,8 @@ function cellExchange(indexfrom, indexto) {
         imgRandArr[indexfrom] = imgRandArr[indexto];
         imgRandArr[indexto] = temp;
 
+        $("#scroe").text("步数：" + (scroe+=1));
+
         //判断是否完成全部移动，可以结束游戏
         if (checkPass(imgOrigArr, imgRandArr)){
             passGame();
@@ -226,14 +312,16 @@ function checkPass(rightArr, puzzleArr) {
 
 //成功完成游戏之后的处理
 function passGame() {
-    //取消样式和事件绑定
-    /*for (var i = 0; i < imgOrigArr.length; i++){
-        if (imgCells.eq(i).has("mouseOn")){
-            imgCells.eq(i).removeClass("mouseOn");
-        }
-    }*/
-    imgCells.unbind("mouseover");
-    imgCells.unbind("mouseout");
-    imgCells.unbind("mousedown");
-    alert("恭喜过关");
+    passImg.push(presentImg);
+    rebackGame();
+    $("#game_result span").css('background', '#62baa0');
+    $("#game_result span").click(function () {
+        showReward();
+    });
+}
+
+//展示游戏成功之后的界面
+function showReward() {
+    $("#imgArea").fadeOut();
+    $("#game_reward").fadeIn();
 }
