@@ -93,7 +93,7 @@ function init() {
     
     //弹出四格框，选择进入相应功能界面
     $("#refresh").click(function () {
-        alertFDialog();
+        alertFDialog(city);
     });
     
     //点击右上角图标弹出下拉框跳转到其他界面

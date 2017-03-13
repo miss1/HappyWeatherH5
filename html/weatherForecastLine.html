@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>HappyWeather</title>
+
+    <link type="text/css" rel="stylesheet" href="../css/demo.css"/>
+    <link type="text/css" rel="stylesheet" href="../css/weatherForecastLine.css"/>
+
+    <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../js/support.js"></script>
+    <script type="text/javascript" src="../js/linechat.js"></script>
+    <script type="text/javascript" src="../js/weatherForecastLine.js"></script>
+</head>
+<body>
+    <div id="head">
+        <img src="../img/back.png" id="back">
+        <span>Weather Forecast</span>
+        <span id="other">海口</span>
+    </div>
+    <div id="chartitle">
+        <span>今天</span><span>明天</span><span>03-15</span><span>03-16</span><span>03-17</span><span>03-18</span><span>03-19</span>
+    </div>
+    <div id="content">
+        <div id="content_vediol">
+            <div class="chartline">
+                <span id="tmpmax">最高温度：</span>
+                <canvas id="forcast_tmpmax">Your browser does not have support for canvas.</canvas>
+            </div>
+            <div class="chartline" id="aa">
+                <span id="tmpmin">最低温度：</span>
+                <canvas id="forcast_tmpmin">Your browser does not have support for canvas.</canvas>
+            </div>
+            <div class="chartline">
+                <span id="sr">日出时间：</span>
+                <canvas id="forcast_sr">Your browser does not have support for canvas.</canvas>
+            </div>
+            <div class="chartline">
+                <span id="ss">日落时间：</span>
+                <canvas id="forcast_ss">Your browser does not have support for canvas.</canvas>
+            </div>
+            <div class="chartline">
+                <span id="vis">能见度：</span>
+                <canvas id="forcast_vis">Your browser does not have support for canvas.</canvas>
+            </div>
+        </div>
+        <div id="loading_tips"><img src="../img/loading.png"><span></span></div>
+    </div>
+</body>
+</html>

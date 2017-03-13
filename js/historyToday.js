@@ -160,17 +160,22 @@ function initViewpage2(targetinfo, data) {
     $("#hd_title").text(targetinfo.title);
 
     //分段
-    var attr = data.result[0].content.split("\r\n");
-    var _html = "";
-    for (var i in attr){
-        _html += attr[i] + "<br/>"
-    }
-    $("#hd_content").html("<p>"+ _html +"</p>");
+    if (data.result != null){
+        var attr = data.result[0].content.split("\r\n");
+        var _html = "";
+        for (var i in attr){
+            _html += attr[i] + "<br/>"
+        }
+        $("#hd_content").html("<p>"+ _html +"</p>");
 
-    if (data.result[0].picUrl.length > 0){
-        $("#hd_img img").attr('src', data.result[0].picUrl[0].url);
+        if (data.result[0].picUrl.length > 0){
+            $("#hd_img img").attr('src', data.result[0].picUrl[0].url);
+        }else {
+            $("#hd_img img").attr('src', '../img/ZWCPTP.gif');
+        }
     }else {
-        $("#hd_img img").attr('src', '../img/ZWCPTP.gif');
+        console.log(data.result);
+        $("#hd_content").html("<p>暂无详细信息</p>");
     }
 
 }

@@ -92,6 +92,20 @@ function splitDate1(data) {
     return data.split(" ")[0];
 }
 
+//处理时间（06:48变成0648）
+function timeToInt(time) {
+    return time.split(":")[0] + time.split(":")[1];
+}
+
+//将处理后的时间变回原来的样子(0648变成06:48)
+function intToTime(data) {
+    if (data.length == 3){
+        return data.substring(0, 1) + ":" + data.substring(1, 3);
+    }else {
+        return data.substring(0, 2) + ":" + data.substring(2, 4);
+    }
+}
+
 //根据天气代码返回相应的背景图片
 function bgPath(code) {
     var path;
