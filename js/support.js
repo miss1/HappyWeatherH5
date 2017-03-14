@@ -296,3 +296,26 @@ function imgPath(code) {
     }
     return path;
 }
+
+//从服务器中获取气象小知识
+function queryKnowledge(idname, callback) {
+    var knowledge = Bmob.Object.extend("knowledge");
+    var query = new Bmob.Query(knowledge);
+    var sing = (parseInt(Math.random() * 15)).toString();
+    console.log(sing);
+    query.equalTo("sing", sing);
+    query.find({
+        success:function (result) {
+            if (result.length != 0){
+                console.log(result[0].get("content"));
+                $("#"+idname).text(result[0].get("content"));
+                if (typeof (callback) == 'function'){
+                    callback(result[0].get("content"));
+                }
+            }
+        },
+        error:function (err) {
+            console.log("query fail");
+        }
+    });
+}

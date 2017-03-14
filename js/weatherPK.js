@@ -13,6 +13,8 @@ var infoL;  //左边城市天气信息
 var fireworkX;
 
 $(document).ready(function () {
+    Bmob.initialize(APPLICATIONID, RESTAPIKEY);
+
     preperforMobile();
     init();
 
@@ -52,6 +54,7 @@ function init() {
             $(".pkvalue_left").fadeOut();
             $(".pkvalue_right").fadeOut();
             $("#progresscanvas").fadeOut();
+            $("#pkconcluding").fadeOut();
             $("#prepertips").fadeIn();
             $("#page2").fadeOut();
             $("#page1").fadeIn();
@@ -139,6 +142,11 @@ function startprogress() {
         loadprogressbar("pmCanvas", calculateLeft(leftdata.wind.spd, rightdata.wind.spd)["left"],
             calculateLeft(leftdata.wind.spd, rightdata.wind.spd)["right"], pheight, startX, endX, y, fireworkX, 430, leftdata.wind.spd, rightdata.wind.spd);
     },19000);
+
+    setTimeout(function () {
+        queryKnowledge("pkconcluding");
+        $("#pkconcluding").fadeIn();
+    },25000);
 }
 
 //计算进度条左右长度的长度

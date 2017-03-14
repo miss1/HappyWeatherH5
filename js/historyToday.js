@@ -5,6 +5,8 @@
 var month;
 var date;
 
+var bgs = ["../img/hbg1.png", "../img/hbg2.png", "../img/hbg3.png", "../img/hbg4.png"];
+
 $(document).ready(function () {
     var curDate = new Date();
     month = curDate.getMonth() + 1;
@@ -94,6 +96,7 @@ function prepercssPage1() {
             $(this).css({position: 'absolute', top: minHeight, left: $(".box-content").eq(minIndex).position().left - 4});
             boxHeightArr[minIndex] = boxHeightArr[minIndex] + $(this).height() + 20;
         }
+        $(this).css('background', 'url('+ bgs[parseInt(Math.random()*4)] +')');
     });
 }
 

@@ -15,6 +15,9 @@ var scroe = 0;        //游戏步数
 
 var presentImg;          //当前图片
 var passImg = [];        //已经通关的图片
+var passKnowledge = {};  //已经获取到的气象知识点
+
+var s = 0;
 
 function initGame(img, clicktarger) {
     presentImg = img;
@@ -27,10 +30,18 @@ function initGame(img, clicktarger) {
     $("#imgArea").fadeIn();
     $("#game_reward").fadeOut();
 
+    $("#game_result span").text("show");
+    s = 0;
+
     if ($.inArray(img, passImg) != -1){
+        $("#gameAnswer").text(passKnowledge[img]);
         $("#game_result span").css('background', '#62baa0');
         $("#game_result span").click(function () {
-            showReward();
+            if (s == 0){
+                showReward(img);
+            }else {
+                showback();
+            }
         });
     }else {
         $("#game_result span").css('background', '#5E5E5E');
@@ -55,17 +66,23 @@ function initGame(img, clicktarger) {
         imgSplit(img);
     }
 
+    bindbtn();
+    bindlevel();
+}
+
+//绑定开始按钮
+function bindbtn() {
     //开始/复原游戏
     $("#btn").click(function () {
         $("#imgArea").fadeIn();
         $("#game_reward").fadeOut();
         if (isInGame){
             alertBox("复原游戏", "游戏正在进行，确定要复原吗？", function () {
-                imgSplit(img);
+                imgSplit(presentImg);
                 rebackGame();
             })
         }else {
-            imgSplit(img);
+            imgSplit(presentImg);
             randomArr();
             cellOrder(imgRandArr);
             beginGamePc();
@@ -76,7 +93,10 @@ function initGame(img, clicktarger) {
             $("#scroe").text("步数：0");
         }
     });
+}
 
+//绑定选择难度按钮
+function bindlevel() {
     //切换难度
     $("#level").click(function () {
         if (isInGame){
@@ -86,7 +106,7 @@ function initGame(img, clicktarger) {
                 }else {
                     lever = 3;
                 }
-                imgSplit(img);
+                imgSplit(presentImg);
                 rebackGame();
                 $("#level").text("level: " + lever + "x" + lever);
             })
@@ -96,7 +116,7 @@ function initGame(img, clicktarger) {
             }else {
                 lever = 3;
             }
-            imgSplit(img);
+            imgSplit(presentImg);
             $("#level").text("level: " + lever + "x" + lever);
         }
     });
@@ -312,16 +332,48 @@ function checkPass(rightArr, puzzleArr) {
 
 //成功完成游戏之后的处理
 function passGame() {
-    passImg.push(presentImg);
-    rebackGame();
-    $("#game_result span").css('background', '#62baa0');
-    $("#game_result span").click(function () {
-        showReward();
-    });
+    if ($.inArray(presentImg, passImg) == -1){
+        passImg.push(presentImg);
+        rebackGame();
+        queryKnowledge("gameAnswer", function (txt) {
+            passKnowledge[presentImg] = txt;
+        });
+        $("#game_result span").css('background', '#62baa0');
+        $("#game_result span").click(function () {
+            if (s == 0){
+                showReward(presentImg);
+            }else {
+                showback();
+            }
+        });
+    }else {
+        rebackGame();
+        queryKnowledge("gameAnswer", function (txt) {
+            passKnowledge[presentImg] = txt;
+        });
+        passKnowledge[presentImg] = $("#gameAnswer").text();
+        console.log("info:"+passKnowledge[presentImg]);
+        showReward(presentImg);
+    }
 }
 
 //展示游戏成功之后的界面
-function showReward() {
+function showReward(img) {
     $("#imgArea").fadeOut();
     $("#game_reward").fadeIn();
+    $("#btn").unbind();
+    $("#level").unbind();
+    $("#game_result span").text("back");
+    $("#game_reward").css('background', 'url('+ img +')');
+    s = 1;
+}
+
+//返回游戏界面
+function showback() {
+    $("#imgArea").fadeIn();
+    $("#game_reward").fadeOut();
+    bindbtn();
+    bindlevel();
+    $("#game_result span").text("show");
+    s = 0;
 }
