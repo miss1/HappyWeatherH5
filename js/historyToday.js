@@ -179,6 +179,7 @@ function initViewpage2(targetinfo, data) {
     }else {
         console.log(data.result);
         $("#hd_content").html("<p>暂无详细信息</p>");
+        $("#hd_img img").attr('src', '../img/ZWCPTP.gif');
     }
 
 }

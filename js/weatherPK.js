@@ -24,6 +24,7 @@ $(document).ready(function () {
 function preperforMobile() {
     $("#pk_begin").css('height', documentHeight);
     $(".pkcanvas").css('width', documentWidth - 120);
+    $("#page2").css('height', documentHeight);
     if (documentWidth > 700){
         $(".pkitem canvas").css('width', 300);
         $(".pkvalue").css({width: 300,left: (documentWidth - 420)/2});

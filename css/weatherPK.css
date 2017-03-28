@@ -95,6 +95,7 @@
 }
 
 #page2{
+    overflow-y: auto;
     display: none;
 }
 

@@ -33,15 +33,15 @@ function queryAllImg() {
             if (result.length != 0){
                 var img_html = '';
                 if (count == 0){
-                    initGame(result[0].get("img")._url);
-                    img_html += "<li class='select'><img src='"+ result[0].get("img")._url +"' class='imgcontent'></li>";
+                    initGame(result[0].get("img"));
+                    img_html += "<li class='select'><img src='"+ result[0].get("img") +"' class='imgcontent'></li>";
                 }else {
-                    img_html += "<li><img src='"+ result[0].get("img")._url +"' class='imgcontent'></li>";
+                    img_html += "<li><img src='"+ result[0].get("img") +"' class='imgcontent'></li>";
                 }
                 count += limit;
                 console.log(result);
                 for (var i = 1; i < result.length; i++){
-                    img_html += "<li><img src='"+ result[i].get("img")._url +"' class='imgcontent'></li>"
+                    img_html += "<li><img src='"+ result[i].get("img") +"' class='imgcontent'></li>"
                 }
                 $("#img_list > li:last-child").before(img_html);
             }

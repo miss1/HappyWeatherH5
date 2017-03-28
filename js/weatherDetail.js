@@ -8,6 +8,7 @@ var suggesstionInfo;
 $(document).ready(function () {
 
     //自适应手机
+    $("#content").css('height', documentHeight - 80);
     //设置加载提示框的位置，隐藏加载框
     $("#waittips").css('top', documentHeight/2 - 24);
     $("#waittips").css('right', documentWidth/2 - 24);
