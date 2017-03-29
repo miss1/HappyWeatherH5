@@ -22,12 +22,20 @@ function preperforM() {
         $("#imgArea").css('width', w);
     }else {
         limit = 7;
-        w = $("#imgArea").width();
+        w = documentHeight - 270;
+        if ($("#imgArea").width() > w){
+            $("#imgArea").css('width', w);
+        }else {
+            w = $("#imgArea").width();
+        }
     }
     $("#imgArea").css('height', w);
     $("#game_reward").css({width: w, height: w});
-    $("#game_c").css('height', documentHeight - 180 - w);
-    $("#game_control").css('width', w + 20);
+    if (documentHeight - 180 - w > 90){
+        $("#game_c").css('height', documentHeight - 180 - w);
+    }else {
+        $("#game_c").css('height', 90);
+    }
 }
 
 //从服务器获取所有图片
