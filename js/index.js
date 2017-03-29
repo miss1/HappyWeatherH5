@@ -205,7 +205,7 @@ function updateCityNum() {
     var cityHtml = '';
     for (var i = 0; i < localStorage.length; i++){
         console.log("size:"+localStorage.key(i).length);
-        if (localStorage.key(i).length < 5){     //过滤掉地图以及bmob的信息
+        if (localStorage.key(i).length < 5 && localStorage.key(i) != "null"){     //过滤掉地图以及bmob的信息
             cityHtml += "<span>" + localStorage.getItem(localStorage.key(i)) + "</span>"
         }
     }

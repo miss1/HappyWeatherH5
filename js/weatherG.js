@@ -14,12 +14,20 @@ $(document).ready(function () {
 
 //自适应手机
 function preperforM() {
-    $("#game_content").css('height', documentHeight - 190);
+    //$("#game_content").css('height', documentHeight - 190);
+    var w;
     if (documentWidth > 700){
-        limit = 10;
+        limit = parseInt(documentWidth / 110) + 1;
+        w = 300;
+        $("#imgArea").css('width', w);
     }else {
         limit = 7;
+        w = $("#imgArea").width();
     }
+    $("#imgArea").css('height', w);
+    $("#game_reward").css({width: w, height: w});
+    $("#game_c").css('height', documentHeight - 180 - w);
+    $("#game_control").css('width', w + 20);
 }
 
 //从服务器获取所有图片
@@ -69,7 +77,7 @@ function initclick() {
 
     //底部滚动事件
     $("#game_footer").scroll(function () {
-        var totalSize = 140 * ($("#img_list li").length - 1);
+        var totalSize = 110 * ($("#img_list li").length - 1);
         if ($(this).scrollLeft() + documentWidth == totalSize){
             $("#loading").show();
             queryAllImg();

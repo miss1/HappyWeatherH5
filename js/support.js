@@ -38,10 +38,10 @@ function setBgPic(code) {
     $("body").css('background', 'url("'+ bgPath(code) +'")');
     if (documentWidth > 700){
         $("body").css('background-size', 'auto '+documentHeight+'px');
-        $("body").css('background-repeat', 'repeat-x');
+        $("body").css('background-repeat', 'repeat');
     }else {
         $("body").css('background-size', documentWidth+'px '+documentHeight+'px');
-        $("body").css('background-repeat', 'no-repeat');
+        $("body").css('background-repeat', 'repeat-y');
     }
 }
 
