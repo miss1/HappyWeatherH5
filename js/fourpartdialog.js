@@ -14,7 +14,7 @@ function fdialogHtml(city) {
     _fhtml += '<div id="fb_box"></div><div id="fb_con"><img src="../img/close.png" id="close"><table>';
     _fhtml += '<tr id="line1"><td class="line"><a href="../html/weatherPK.html"><img src="../img/weatherPK.png"></a></td>';
     _fhtml += '<td><a href="javascript:void(0);" onclick="jumpToLine(city)"><img src="../img/chartline.png"></a></td></tr>';
-    _fhtml += '<tr><td class="line"><a href="#"><img src="../img/weatherGame.png"></a></td>';
+    _fhtml += '<tr><td class="line"><a href="https://miss1.github.io/puzzle/"><img src="../img/weatherGame.png"></a></td>';
     _fhtml += '<td><a href="../html/historyTody.html"><img src="../img/historyTody.png"></a></td></tr>';
     _fhtml += '</table></div>';
     $("body").append(_fhtml);
