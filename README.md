@@ -5,7 +5,9 @@
 > 通过ajax获取天气信息 <br>
 > 直接下载代码解压，运行index.html就能跑了<br>
 
->[安卓版代码请戳这里](https://github.com/miss1/HappyWeather)<br>
+> [拼图游戏模块代码请戳这里](https://github.com/miss1/puzzle)<br>
+
+> [安卓版代码请戳这里](https://github.com/miss1/HappyWeather)<br>
 
 ## 项目显示效果
 
