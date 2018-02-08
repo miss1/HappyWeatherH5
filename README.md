@@ -18,9 +18,9 @@
 
 ## 项目截图
 
-![image](https://github.com/miss1/HappyWeatherH5/raw/master/screenshot/Screenshot1.png).
+![image](https://github.com/miss1/HappyWeatherH5/raw/master/screenshot/Screenshot1.png)<br>
 ![image](https://github.com/miss1/HappyWeatherH5/raw/master/screenshot/Screenshot2.png)<br>
-![image](https://github.com/miss1/HappyWeatherH5/raw/master/screenshot/Screenshot3.png).
+![image](https://github.com/miss1/HappyWeatherH5/raw/master/screenshot/Screenshot3.png)<br>
 ![image](https://github.com/miss1/HappyWeatherH5/raw/master/screenshot/Screenshot4.png)<br>
-![image](https://github.com/miss1/HappyWeatherH5/raw/master/screenshot/Screenshot5.png).
-![image](https://github.com/miss1/HappyWeatherH5/raw/master/screenshot/Screenshot6.png)<br>
+![image](https://github.com/miss1/HappyWeatherH5/raw/master/screenshot/Screenshot5.png)<br>
+![image](https://github.com/miss1/HappyWeatherH5/raw/master/screenshot/Screenshot6.png)
