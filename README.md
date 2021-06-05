@@ -11,10 +11,10 @@
 
 ## 项目显示效果
 
->[查看项目演示效果请戳这里](https://miss1.github.io/happy_weather/html)<br>
+>[查看项目演示效果请戳这里](https://miss1.github.io/outLinkPage/weather/html/index.html)<br>
 
 >手机端请扫描下面二维码<br>
-![image](https://github.com/miss1/HappyWeatherH5/raw/master/screenshot/happyweather.png)
+![image](https://github.com/miss1/HappyWeatherH5/raw/master/screenshot/happyweatherlink.png)
 
 ## 项目截图
 
