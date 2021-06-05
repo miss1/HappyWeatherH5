@@ -84,7 +84,11 @@ function updateChartitle(data) {
     $("#chartitle span").each(function () {
         var i = $(this).index();
         var forecastInfo = data.HeWeather5[0].daily_forecast[i];
-        $(this).text(splitDate(forecastInfo.date));
+        if (forecastInfo) {
+            $(this).text(splitDate(forecastInfo.date));
+        } else {
+            $(this).hide();
+        }
     });
 }
 

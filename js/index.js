@@ -16,12 +16,12 @@ $(document).ready(function () {
 //自适应手机
 function preperForMobile() {
     console.log("width:"+documentWidth+"height:"+documentHeight);
-    
+
     //设置加载提示框的位置，隐藏加载框
     $("#waittips").css('top', documentHeight/2 - 24);
     $("#waittips").css('right', documentWidth/2 - 24);
     $("#waittips").css('display', 'none');
-    
+
     $("#content").css('height', documentHeight - 130);        //设置中间部分高度自适应
     //设置底部横向tab栏宽度和城市下拉框的宽度及位置
     if (documentWidth > 700){
@@ -90,12 +90,12 @@ function init() {
         });
         updateView($(this).index());
     });
-    
+
     //弹出四格框，选择进入相应功能界面
     $("#refresh").click(function () {
         alertFDialog(city);
     });
-    
+
     //点击右上角图标弹出下拉框跳转到其他界面
     $("#more").click(function () {
         $("#droplist").slideDown();
@@ -103,7 +103,7 @@ function init() {
     $("#droplist a").click(function () {
         $("#droplist").slideUp();
     });
-    
+
     //点击城市名称弹出下拉框切换城市
     $("#cityname").click(function () {
         if ($("#citylist").css("display") == "block"){
@@ -178,9 +178,15 @@ function updateTab() {
     $("#footer ul li").each(function () {
         var i = $(this).index();
         var forecastInfo = weatherInfo.HeWeather5[0].daily_forecast[i];
-        $(this).children(".forc_tmp").text(forecastInfo.tmp.min + "°" + " - " + forecastInfo.tmp.max + "°");
-        $(this).children(".forc_time").text(splitDate(forecastInfo.date));
-        $(this).children(".forc_code_d").attr('src', imgPath(forecastInfo.cond.code_d));
+        if (forecastInfo) {
+            $(this).children(".forc_tmp").text(forecastInfo.tmp.min + "°" + " - " + forecastInfo.tmp.max + "°");
+            $(this).children(".forc_time").text(splitDate(forecastInfo.date));
+            $(this).children(".forc_code_d").attr('src', imgPath(forecastInfo.cond.code_d));
+        } else {
+            $(this).children(".forc_tmp").text('N/A');
+            $(this).children(".forc_time").text('N/A');
+            $(this).children(".forc_code_d").attr('N/A');
+        }
     });
 }
 
