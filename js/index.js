@@ -41,6 +41,7 @@ function getLocation() {
     var citysearch = new AMap.CitySearch();
     //自动获取用户IP，返回当前城市
     citysearch.getLocalCity(function(status, result) {
+        console.log(result)
         if (status === 'complete' && result.info === 'OK') {
             if (result && result.city) {
                 console.log('个数：'+localStorage.length);
@@ -137,6 +138,7 @@ function init() {
 //查询未来七天天气
 function queryWeather() {
     console.log(SERVER_URL);
+    if (!city) city = "北京";
     $.ajax({
         type:'get',
         url:SERVER_URL + PATH_FORECAST + '?city=' + city + "&key=" + KEY,
