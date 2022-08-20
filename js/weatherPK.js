@@ -13,11 +13,8 @@ var infoL;  //左边城市天气信息
 var fireworkX;
 
 $(document).ready(function () {
-    Bmob.initialize(APPLICATIONID, RESTAPIKEY);
-
     preperforMobile();
     init();
-
 });
 
 //自适应手机
@@ -144,7 +141,6 @@ function startprogress() {
     },19000);
 
     setTimeout(function () {
-        queryKnowledge("pkconcluding");
         $("#pkconcluding").fadeIn();
     },25000);
 }
