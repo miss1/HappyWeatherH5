@@ -5,18 +5,20 @@ documentWidth = window.innerWidth;
 documentHeight = window.innerHeight;
 
 /*获取天气信息相关*/
-var SERVER_URL = "https://free-api.heweather.com/v5";
-var PATH_FORECAST = "/forecast";
-var PATH_NOW = "/now";
-var PATH_SUGGESTION = "/suggestion";
-var PATH_WEATHER = "/weather";
-var PATH_SEARCH = "../json/city.json";
-var KEY = "46ffe7931e3f4da38a47fa1554abcd59";
+const SERVER_URL = "https://devapi.qweather.com/v7/weather";
+const PATH_FORECAST = "/7d";
+const PATH_NOW = "/now";
+const PATH_SUGGESTION = "/suggestion";
+const PATH_WEATHER = "/weather";
+const PATH_SEARCH = "../json/city.json";
+const KEY = "46ffe7931e3f4da38a47fa1554abcd59";
+
+const SERVER_CITY = "https://geoapi.qweather.com/v2/city/lookup";
 
 /*历史上的今天接口*/
-var H_SERVER_URL = "http://v.juhe.cn/todayOnhistory/queryEvent.php";
-var H_DETAIL_SERVER_URL = "http://v.juhe.cn/todayOnhistory/queryDetail.php";
-var H_KEY = "b293da1aec89ab609f0615c00106065c";
+const H_SERVER_URL = "http://v.juhe.cn/todayOnhistory/queryEvent.php";
+const H_DETAIL_SERVER_URL = "http://v.juhe.cn/todayOnhistory/queryDetail.php";
+const H_KEY = "b293da1aec89ab609f0615c00106065c";
 
 //一天的毫秒数
 var ONEDAY = 86400000;
@@ -28,6 +30,18 @@ $(document).ready(function () {
         setBgPic("101");
     }
 });
+
+async function sendRequest(url, method, params) {
+    const param = {
+        method: method,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+    if (params) param.body = JSON.stringify(params);
+    const response = await fetch(url, param);
+    return await response.json();
+}
 
 //设置背景图
 function setBgPic(code) {
@@ -100,6 +114,17 @@ function intToTime(data) {
     }else {
         return data.substring(0, 2) + ":" + data.substring(2, 4);
     }
+}
+
+function formatDate(t) {
+    let d = new Date(t);
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const date = String(d.getDate()).padStart(2, '0');
+    const hour = String(d.getHours()).padStart(2, '0');
+    const minute = String(d.getMinutes()).padStart(2, '0');
+    const second = String(d.getSeconds()).padStart(2, '0');
+    return `${year} - ${month} - ${date} ${hour} : ${minute} : ${second}`;
 }
 
 //根据天气代码返回相应的背景图片
@@ -291,4 +316,9 @@ function imgPath(code) {
             break;
     }
     return path;
+}
+
+function loading(tag) {
+    if (tag) $("#waittips").css('display', 'block');
+    else $("#waittips").css('display', 'none');
 }
