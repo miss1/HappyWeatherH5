@@ -133,22 +133,22 @@ function bgPath(code) {
     console.log(code.substr(0, 1));
     switch (code.substr(0, 1)){
         case "1":
-            path = "../img/bg_sunny.png";
+            path = "./img/bg_sunny.png";
             break;
         case "2":
-            path = "../img/bg_thunder.png";
+            path = "./img/bg_thunder.png";
             break;
         case "3":
-            path = "../img/bg_rain.png";
+            path = "./img/bg_rain.png";
             break;
         case "4":
-            path = "../img/bg_snow.png";
+            path = "./img/bg_snow.png";
             break;
         case "5":
-            path = "../img/bg_cloudynight.png";
+            path = "./img/bg_cloudynight.png";
             break;
         default:
-            path = "../img/bg_sunny.png";
+            path = "./img/bg_sunny.png";
             break;
     }
     return path;
@@ -159,160 +159,160 @@ function imgPath(code) {
     var path;
     switch (code){
         case "100":
-            path = "../img/aoo.png";
+            path = "./img/aoo.png";
             break;
         case "101":
-            path = "../img/aoa.png";
+            path = "./img/aoa.png";
             break;
         case "102":
-            path = "../img/aob.png";
+            path = "./img/aob.png";
             break;
         case "103":
-            path = "../img/aoc.png";
+            path = "./img/aoc.png";
             break;
         case "104":
-            path = "../img/aod.png";
+            path = "./img/aod.png";
             break;
         case "200":
-            path = "../img/boo.png";
+            path = "./img/boo.png";
             break;
         case "201":
-            path = "../img/boa.png";
+            path = "./img/boa.png";
             break;
         case "202":
-            path = "../img/bob.png";
+            path = "./img/bob.png";
             break;
         case "203":
-            path = "../img/boc.png";
+            path = "./img/boc.png";
             break;
         case "204":
-            path = "../img/bod.png";
+            path = "./img/bod.png";
             break;
         case "205":
-            path = "../img/boe.png";
+            path = "./img/boe.png";
             break;
         case "206":
-            path = "../img/bof.png";
+            path = "./img/bof.png";
             break;
         case "207":
-            path = "../img/bog.png";
+            path = "./img/bog.png";
             break;
         case "208":
-            path = "../img/boh.png";
+            path = "./img/boh.png";
             break;
         case "209":
-            path = "../img/boi.png";
+            path = "./img/boi.png";
             break;
         case "210":
-            path = "../img/boj.png";
+            path = "./img/boj.png";
             break;
         case "211":
-            path = "../img/bok.png";
+            path = "./img/bok.png";
             break;
         case "212":
-            path = "../img/bol.png";
+            path = "./img/bol.png";
             break;
         case "213":
-            path = "../img/bom.png";
+            path = "./img/bom.png";
             break;
         case "300":
-            path = "../img/coo.png";
+            path = "./img/coo.png";
             break;
         case "301":
-            path = "../img/coa.png";
+            path = "./img/coa.png";
             break;
         case "302":
-            path = "../img/cob.png";
+            path = "./img/cob.png";
             break;
         case "303":
-            path = "../img/coc.png";
+            path = "./img/coc.png";
             break;
         case "304":
-            path = "../img/cod.png";
+            path = "./img/cod.png";
             break;
         case "305":
-            path = "../img/coe.png";
+            path = "./img/coe.png";
             break;
         case "306":
-            path = "../img/cof.png";
+            path = "./img/cof.png";
             break;
         case "307":
-            path = "../img/cog.png";
+            path = "./img/cog.png";
             break;
         case "308":
-            path = "../img/coh.png";
+            path = "./img/coh.png";
             break;
         case "309":
-            path = "../img/coi.png";
+            path = "./img/coi.png";
             break;
         case "310":
-            path = "../img/coj.png";
+            path = "./img/coj.png";
             break;
         case "311":
-            path = "../img/cok.png";
+            path = "./img/cok.png";
             break;
         case "312":
-            path = "../img/col.png";
+            path = "./img/col.png";
             break;
         case "313":
-            path = "../img/com.png";
+            path = "./img/com.png";
             break;
         case "400":
-            path = "../img/doo.png";
+            path = "./img/doo.png";
             break;
         case "401":
-            path = "../img/doa.png";
+            path = "./img/doa.png";
             break;
         case "402":
-            path = "../img/dob.png";
+            path = "./img/dob.png";
             break;
         case "403":
-            path = "../img/doc.png";
+            path = "./img/doc.png";
             break;
         case "404":
-            path = "../img/dod.png";
+            path = "./img/dod.png";
             break;
         case "405":
-            path = "../img/doe.png";
+            path = "./img/doe.png";
             break;
         case "406":
-            path = "../img/dof.png";
+            path = "./img/dof.png";
             break;
         case "407":
-            path = "../img/dog.png";
+            path = "./img/dog.png";
             break;
         case "500":
-            path = "../img/eoo.png";
+            path = "./img/eoo.png";
             break;
         case "501":
-            path = "../img/eoa.png";
+            path = "./img/eoa.png";
             break;
         case "502":
-            path = "../img/eob.png";
+            path = "./img/eob.png";
             break;
         case "503":
-            path = "../img/eoc.png";
+            path = "./img/eoc.png";
             break;
         case "504":
-            path = "../img/eod.png";
+            path = "./img/eod.png";
             break;
         case "507":
-            path = "../img/eog.png";
+            path = "./img/eog.png";
             break;
         case "508":
-            path = "../img/eoh.png";
+            path = "./img/eoh.png";
             break;
         case "900":
-            path = "../img/ioo.png";
+            path = "./img/ioo.png";
             break;
         case "901":
-            path = "../img/ioa.png";
+            path = "./img/ioa.png";
             break;
         case "999":
-            path = "../img/iii.png";
+            path = "./img/iii.png";
             break;
         default:
-            path = "../img/iii.png";
+            path = "./img/iii.png";
             break;
     }
     return path;
